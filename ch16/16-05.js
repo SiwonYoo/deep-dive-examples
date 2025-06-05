@@ -67,9 +67,3 @@
   // Object.defineProperty(person, "name", { configurable: true });
   // TypeError: Cannot redefine property: name
 })();
-
-/* 16-13 */
-(() => {})();
-
-/* 16-14 */
-(() => {})();
