@@ -4,8 +4,7 @@
 (() => {
   const Queue = (function () {
     function Queue(array = []) {
-      if (!Array.isArray(array))
-        throw new TypeError(`${array} is not an array`);
+      if (!Array.isArray(array)) throw new TypeError(`${array} is not an array`);
       this.array = array;
     }
     Queue.prototype = {
@@ -41,8 +40,7 @@
     #array;
 
     constructor(array = []) {
-      if (!Array.isArray(array))
-        throw new TypeError(`${array} is not an array`);
+      if (!Array.isArray(array)) throw new TypeError(`${array} is not an array`);
       this.#array = array;
     }
 
@@ -67,4 +65,13 @@
   queue.dequeue();
   console.log(queue.entries()); // [ 2, 3 ]
   console.log(queue.array); // undefined
+})();
+
+/* 27-86 */
+(() => {
+  const arr = [1, [2, [3, 4]]];
+  const flatArr = arr.flat(2);
+
+  // 원본 배열은 수정되지 않는다.
+  console.log("arr:", arr, "flatArr:", flatArr); // arr: [ 1, [ 2, [ 3, 4 ] ] ] flatArr: [ 1, 2, 3, 4 ]
 })();
