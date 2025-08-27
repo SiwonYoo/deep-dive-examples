@@ -3,7 +3,7 @@
 [30장. Date](#30장-date)  
 &nbsp;&nbsp;[30.1 Date 생성자 함수](#301-date-생성자-함수)  
 &nbsp;&nbsp;[30.2 Date 메서드](#302-date-메서드)  
-&nbsp;&nbsp;[## 30.3 Date를 활용한 시계 예제](#303-date를-활용한-시계-예제)
+&nbsp;&nbsp;[30.3 Date를 활용한 시계 예제](#303-date를-활용한-시계-예제)
 
 # 30장. Date
 
