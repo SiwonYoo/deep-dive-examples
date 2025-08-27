@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script>
+      const today = dayjs();
+      const finishDate = dayjs("2025-08-08");
+
+      console.log("today:", today); // M {$L: 'en', $d: Wed Aug 27 2025 00:39:31 GMT+0900 (한국 표준시), $y: 2025, $M: 7, $D: 27, …}
+      console.log("finishDate:", finishDate); // M {$L: 'en', $d: Fri Aug 08 2025 00:00:00 GMT+0900 (한국 표준시), $y: 2025, $M: 7, $D: 8, …}
+
+      const diffDays = today.diff(finishDate, "day"); // today - finishDate (day 기준)
+      console.log(diffDays); // 19
+
+      console.log("today(format):", today.format("YYYY-MM-DD")); // today(format): 2025-08-27
+      console.log("finishDate(format):", finishDate.format("YYYY-MM-DD")); // finishDate(format): 2025-08-08
+    </script>
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
