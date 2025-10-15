@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>예제 40-42, 40-43</title>
+    <style></style>
+  </head>
+  <body>
+    <h1>예제 40-42, 40-43</h1>
+    <button class="btn">0</button>
+
+    <script>
+      class App {
+        constructor() {
+          this.$button = document.querySelector(".btn");
+          this.count = 0;
+
+          // increase 메서드를 이벤트 핸들러로 등록
+          // this.$button.onclick = this.increase;
+          this.$button.onclick = this.increase.bind(this);
+        }
+
+        increase() {
+          // 이벤트 핸들러 increase 내부의 this는 DOM 요소(this.$button)를 가리킨다.
+          // 따라서 this.$button은 this.$button.$button과 같다.
+          this.$button.textContent = ++this.count;
+          // 이벤트 핸들러로 바로 등록했을 경우 => Uncaught TypeError: Cannot set properties of undefined (setting 'textContent')
+          // bind를 사용, 이벤트가 발생해도 this는 항상 App 인스턴스를 가리키도록 만듦 => 정상 동작
+        }
+      }
+
+      new App();
+    </script>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 40px">
+      <a href="./40-09-40.html" style="color: black">Prev</a>
+      <a href="../40-10/40-10-44.html" style="color: black">Next</a>
+    </div>
+  </body>
+</html>

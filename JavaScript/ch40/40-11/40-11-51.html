@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>예제 40-51</title>
+    <style></style>
+  </head>
+  <body>
+    <h1>예제 40-51</h1>
+    <button class="btn">Click me</button>
+
+    <script>
+      const $button = document.querySelector(".btn");
+
+      // 1. 버튼 요소에 click 커스텀 이벤트 핸들러를 등록
+      // 커스텀 이벤트를 디스패치하기 이전에 이벤트 핸들러를 등록해야 한다.
+      $button.addEventListener("click", (e) => {
+        console.log(e);
+        alert(`${e} Clicked!`);
+      });
+
+      // 2. 커스텀 이벤트 생성
+      const customEvent = new MouseEvent("click");
+
+      // 3. 커스텀 이벤트 디스패치(동기 처리). click 이벤트가 발생한다.
+      $button.dispatchEvent(customEvent);
+    </script>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 40px">
+      <a href="./40-11-46.html" style="color: black">Prev</a>
+      <a href="./40-11-52.html" style="color: black">Next</a>
+    </div>
+  </body>
+</html>

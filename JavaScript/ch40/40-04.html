@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>40.4 이벤트 핸들러 제거</title>
+  </head>
+  <body>
+    <button>Click me!</button>
+  </body>
+  <script>
+    const $button = document.querySelector("button");
+    $button.addEventListener("click", function foo() {
+      console.log("button click");
+      $button.removeEventListener("click", foo);
+    });
+  </script>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>40.5 이벤트 객체</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <!-- <body onclick="showCoords('a', event)"> -->
+  <body>
+    <p>클릭한 곳의 좌표가 표시됩니다.</p>
+    <em class="message"></em>
+
+    <div id="box" style="width: 200px; height: 200px; background: yellow">클릭!</div>
+
+    <div id="movebox" style="width: 200px; height: 200px; background: yellow; border: 5px solid orange; cursor: pointer">movebox</div>
+
+    <script>
+      const $msg = document.querySelector(".message");
+      function showCoords(a, e) {
+        $msg.textContent = `clientX: ${e.clientX}, clientY: ${e.clientY}`;
+        console.log(a);
+      }
+
+      const $body = document.querySelector("body");
+      $body.addEventListener("click", (e) => {
+        showCoords("a", e);
+      });
+
+      // screenX vs. clientX vs. pageX vs. offsetX
+      const $box = document.getElementById("box");
+
+      box.addEventListener("click", (e) => {
+        console.log("screenX:", e.screenX);
+        console.log("clientX:", e.clientX);
+        console.log("pageX:", e.pageX);
+        console.log("offsetX:", e.offsetX);
+      });
+
+      // 드래그 예제 (40-25)
+      const $movebox = document.querySelector("#movebox");
+      const initialMousePos = { x: 0, y: 0 };
+      const offset = { x: 0, y: 0 };
+
+      const move = (e) => {
+        offset.x = e.clientX - initialMousePos.x;
+        offset.y = e.clientY - initialMousePos.y;
+
+        $movebox.style.transform = `translate3d(${offset.x}px, ${offset.y}px, 0)`;
+
+        console.log("move -> clientX:", e.clientX, "initialMousePos:", initialMousePos.x, "offset:", offset.x);
+      };
+
+      $movebox.addEventListener("mousedown", (e) => {
+        initialMousePos.x = e.clientX - offset.x;
+        initialMousePos.y = e.clientY - offset.y;
+
+        console.log("mousedown -> clientX:", e.clientX, "offset(before):", offset.x, "initialMousePos(after):", initialMousePos.x);
+
+        document.addEventListener("mousemove", move);
+      });
+
+      $movebox.addEventListener("mouseup", () => {
+        document.removeEventListener("mousemove", move);
+      });
+    </script>
+  </body>
+</html>

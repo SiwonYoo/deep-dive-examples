@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>예제 40-32</title>
+    <style>
+      #fruits {
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+      }
+
+      #fruits li {
+        width: 100px;
+        cursor: pointer;
+      }
+
+      #fruits .active {
+        color: red;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>예제 40-32</h1>
+
+    <nav>
+      <ul id="fruits">
+        <li id="apple" class="active">apple</li>
+        <li id="banana">banana</li>
+        <li id="orange">orange</li>
+      </ul>
+    </nav>
+    <div>선택된 내비게이션 아이템: <em class="msg">apple</em></div>
+    <script>
+      const $fruits = document.getElementById("fruits");
+      const $msg = document.querySelector(".msg");
+
+      function activate({ target }) {
+        if (!target.matches("#fruits > li")) return;
+
+        [...$fruits.children].forEach(($fruit) => {
+          $fruit.classList.toggle("active", $fruit === target);
+          $msg.textContent = target.id;
+        });
+      }
+
+      // 이벤트 위임: 상위 요소(ul#fruits)는 하위 요소의 이벤트를 캐치할 수 있다.
+      $fruits.onclick = activate;
+    </script>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 40px">
+      <a href="./40-07-31.html" style="color: black">Prev</a>
+      <a href="../40-08/40-08-36.html" style="color: black">Next</a>
+    </div>
+  </body>
+</html>

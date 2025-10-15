@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>예제 40-30</title>
+    <style>
+      #container {
+        border: 1px solid red;
+        padding: 10px;
+        margin: 10px;
+      }
+
+      p {
+        border: 1px solid blue;
+        padding: 10px;
+      }
+
+      button {
+        border: 1px solid green;
+        background: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>예제 40-30</h1>
+
+    <div id="container">
+      <p>버블링과 캡처링 이벤트 <button>버튼</button></p>
+    </div>
+
+    <script>
+      document.querySelector("#container").addEventListener("click", () => {
+        console.log("Handler for container");
+      });
+
+      document.querySelector("p").addEventListener(
+        "click",
+        () => {
+          console.log("Handler for paragraph");
+        },
+        true
+      );
+
+      document.querySelector("button").addEventListener("click", () => {
+        console.log("Handler for button");
+      });
+    </script>
+
+    <div style="display: flex; justify-content: space-between">
+      <a href="./40-06-29.html" style="color: black">Prev</a>
+      <a href="../40-07/40-07-31.html" style="color: black">Next</a>
+    </div>
+  </body>
+</html>

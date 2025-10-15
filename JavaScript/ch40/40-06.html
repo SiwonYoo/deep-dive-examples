@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>40.6 이벤트 전파</title>
+  </head>
+  <body>
+    <div id="outer" style="border: solid 1px; padding: 10px">
+      outer
+      <div id="inner" style="border: solid 1px red; padding: 10px">inner</div>
+    </div>
+    <script>
+      const $outer = document.getElementById("outer");
+      const $inner = document.getElementById("inner");
+
+      $outer.addEventListener("click", (e) => {
+        console.log("outer click!");
+        console.log(e.composedPath());
+      });
+      $inner.addEventListener(
+        "click",
+        (e) => {
+          console.log("===inner click!");
+          console.log(e.composedPath());
+        },
+        true
+      );
+    </script>
+  </body>
+</html>

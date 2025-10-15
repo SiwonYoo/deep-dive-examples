@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>예제 40-38</title>
+    <style></style>
+  </head>
+  <body>
+    <h1>예제 40-38</h1>
+    <button onclick="handleClick(this)">Click me!</button>
+
+    <script>
+      function handleClick(button) {
+        console.log(button); // <button onclick="handleClick(this)">Click me!</button>
+        console.log(this); // Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+      }
+    </script>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 40px">
+      <a href="../40-08/40-08-36.html" style="color: black">Prev</a>
+      <a href="./40-09-39.html" style="color: black">Next</a>
+    </div>
+  </body>
+</html>

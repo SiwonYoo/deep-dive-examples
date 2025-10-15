@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>40.2 이벤트 타입</title>
+  </head>
+  <body>
+    <div id="outer-box" style="display: flex; align-items: center; width: 300px; height: 300px; background-color: yellow">
+      <div id="inner-box" style="width: 200px; height: 200px; background-color: green"></div>
+    </div>
+    <input type="text" style="padding: 20px; margin-block: 20px" />
+  </body>
+  <script>
+    $outerBox = document.querySelector("#outer-box");
+    $innerBox = document.querySelector("#inner-box");
+
+    // 40.2.1 마우스 이벤트
+    // click
+    $outerBox.onclick = () => {
+      console.log("outer click!");
+    };
+
+    $innerBox.onclick = () => {
+      console.log("inner click!");
+    };
+
+    // mouseenter: 요소 안으로 이동했을 때 (버블링X)
+    // 캡처링은 발생하지만, 버블링은 발생하지 않음
+    $outerBox.addEventListener(
+      "mouseenter",
+      () => {
+        console.log("outer mouse enter! - capture");
+      },
+      true
+    );
+
+    $outerBox.addEventListener(
+      "mouseenter",
+      () => {
+        console.log("outer mouse enter! - bubble");
+      },
+      false
+    );
+
+    $innerBox.onmouseenter = () => {
+      console.log("inner mouse enter!");
+    };
+
+    // mouseover: 요소 안으로 이동했을 때 (버블링O)
+    $outerBox.onmouseover = () => {
+      console.log("outer mouse over!");
+    };
+
+    $innerBox.onmouseover = () => {
+      console.log("inner mouse over!");
+    };
+
+    // mouseleave: 요소 밖으로 이동했을 때 (버블링X)
+    $outerBox.onmouseleave = () => {
+      console.log("outer mouse leave!");
+    };
+
+    $innerBox.onmouseleave = () => {
+      console.log("inner mouse leave!");
+    };
+
+    // 40.2.2 키보드 이벤트
+    // input
+    $input = document.querySelector("input");
+
+    $input.onkeydown = () => {
+      console.log(">> keydown");
+    };
+
+    $input.onkeypress = () => {
+      console.log(">> keypress");
+    };
+
+    // 40.2.5 값 변경 이벤트
+    $input.oninput = () => {
+      console.log("input");
+    };
+
+    $input.onchange = () => {
+      console.log("change");
+    };
+
+    // readystatechange
+    document.onreadystatechange = () => {
+      console.log(document.readyState);
+    };
+
+    // 40.2.7 뷰 이벤트
+    window.onresize = () => {
+      console.log("resize!");
+    };
+
+    window.onscroll = () => {
+      console.log("scroll!");
+    };
+
+    // 40.2.8 리소스 이벤트
+    window.onload = () => {
+      console.log("load!");
+    };
+
+    window.onunload = () => {
+      console.log("unload!");
+    };
+  </script>
+</html>
